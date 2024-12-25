@@ -249,11 +249,11 @@ bool
 PredicateAttribute::addDoc(DocId &doc_id)
 {
     doc_id = getNumDocs();
-    incNumDocs();
-    updateUncommittedDocIdLimit(doc_id);
     _index->adjustDocIdLimit(doc_id);
     _interval_range_vector.ensure_size(doc_id + 1);
     _min_feature.ensure_size(doc_id + 1);
+    incNumDocs();
+    updateUncommittedDocIdLimit(doc_id);
     return true;
 }
 
